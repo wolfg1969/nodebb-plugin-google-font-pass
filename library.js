@@ -12,7 +12,7 @@ var winston = module.parent.require('winston'),
 			if(exists){
 				fs.readFile(path,'utf8', function (err, data) {
 					if (err) throw err;
-					data = data.replace('fonts.googleapis.com/css?family=Raleway:100,300,700,900,500','fonts.useso.com/css?family=Open+Sans:300,400,600')
+					data = data.replace('*@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,700);','*')
 					fs.writeFile(path,data,'utf8',function(err){
 						if (err) throw err;
 						callback();
@@ -28,7 +28,7 @@ var winston = module.parent.require('winston'),
 
 		async.waterfall([
 			function (next) {
-				var fontspath = './node_modules/nodebb-theme-lavender/less/whiteplum.less';
+				var fontspath = './node_modules/nodebb-theme-persona/less/style.less';
 				googlefont.replaceFonts(fontspath,next);
 			}
 		], function (err) {
